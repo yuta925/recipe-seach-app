@@ -8,11 +8,11 @@ export interface Ingredient {
     id: string;
     user_id: string;
     name: string;
-    prep_time: number;
-    cook_time: number;
-    servings: number;
+    prep_time: number | null;
+    cook_time: number | null;
+    servings: number | null;
     ingredients: Ingredient[];
     instructions: string;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
