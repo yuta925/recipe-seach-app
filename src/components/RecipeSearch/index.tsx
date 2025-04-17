@@ -3,7 +3,11 @@ import { Search, Cookie, Clock } from "lucide-react";
 import { Ingredient, Recipe } from "../../types";
 import { supabase } from "../../lib/supabase";
 
-const RecipeSearch: React.FC = () => {
+interface RecipeSearchProps {
+  recipes: Recipe[];
+}
+
+const RecipeSearch: React.FC<RecipeSearchProps> = () => {
   const [searchIngredient, setSearchIngredient] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -13,7 +17,6 @@ const RecipeSearch: React.FC = () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-
       if (!user) return;
 
       const { data } = await supabase
