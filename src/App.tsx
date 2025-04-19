@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { PlusCircle, ChefHat, LogOut } from "lucide-react";
 import RecipeForm from "./components/RecipeForm";
-import RecipeSearch from "./components/RecipeSearch";
+import { RecipeSearch } from "./components/RecipeSearch";
 import Auth from "./components/Auth";
 import { Recipe } from "./types";
 import { supabase } from "./lib/supabase";
@@ -85,7 +85,7 @@ function App() {
             onCancel={() => setShowForm(false)}
           />
         ) : (
-          <RecipeSearch recipes={recipes} />
+          <RecipeSearch />
         )}
       </main>
     </div>
