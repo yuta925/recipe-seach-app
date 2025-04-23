@@ -24,8 +24,17 @@ export function RecipeSearch() {
       if (data && data.length > 0) {
         data.sort((a, b) => (a.name > b.name ? 1 : -1));
       }
+      
       if (data) {
-        setRecipes(data);
+        const parsedRecipes = data.map((recipe) => ({
+          ...recipe,
+          ingredients: Array.isArray(recipe.ingredients)
+            ? recipe.ingredients
+            : JSON.parse(recipe.ingredients as string), // 型安全にパース
+        })) as Recipe[];
+  
+        parsedRecipes.sort((a, b) => (a.name > b.name ? 1 : -1));
+        setRecipes(parsedRecipes);
       }
     };
 
